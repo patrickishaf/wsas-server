@@ -6,11 +6,18 @@ import { User } from './models/user.model';
 export class UserService {
   async createNew(user: UserDto) {
     const { dataValues: newUser } = await User.create({ ...user });
-    console.log({ newUser });
     return newUser.id;
   }
 
-  async updateUser() {}
+  async updateUser(id: number, updateData: UserDto) {
+    const matchingUser = await User.findOne({
+      where: {
+        id,
+      },
+    });
+    await matchingUser.update(updateData);
+    await matchingUser.save();
+  }
 
   async findByEmail() {}
 

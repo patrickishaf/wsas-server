@@ -17,4 +17,8 @@ export class UserRepository {
     };
     return await this.userService.createNew(newUser);
   }
+
+  async updateUser(id: number, updateData: UserDto) {
+    await this.userService.updateUser(id, updateData);
+  }
 }
