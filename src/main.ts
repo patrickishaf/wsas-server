@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { config as exposeEnvironmentVariables } from 'dotenv';
 import { Sequelize } from 'sequelize';
 import { initializeDbModels } from './db.models';
+import { config as exposeEnvironmentVariables } from 'dotenv';
 
 /**
  * ---------------THE REASON I'M CALLING exposeEnvironmentVariables() TWICE-------------------
