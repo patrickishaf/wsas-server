@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
-// import { UserDto } from './user.dto';
+import { UserDto } from './dto/user.dto';
 
 describe('UserService', () => {
   let service: UserService;
@@ -17,18 +17,18 @@ describe('UserService', () => {
     expect(service).toBeDefined();
   });
 
-  // describe('when createNew is called', () => {
-  //   const newUser: UserDto = {
-  //     name: 'Firstname Lastname',
-  //     username: 'username',
-  //     email: 'email',
-  //     phoneNumber: 'phonenumber',
-  //     accountId: 'accountid',
-  //     country: 'country',
-  //   };
-  //   it('should return the id of the object', async () => {
-  //     const newObjId = await service.createNew(newUser);
-  //     expect(newObjId).not.toBeUndefined();
-  //   });
-  // });
+  describe('when createNew is called', () => {
+    const newUser: UserDto = {
+      name: 'Firstname Lastname',
+      username: 'username',
+      email: 'email',
+      phoneNumber: 'phonenumber',
+      accountId: 'accountid',
+      country: 'country',
+    };
+    it('should return the id of the object', async () => {
+      const newObjId = await service.createNew(newUser);
+      expect(newObjId).not.toBeUndefined();
+    });
+  });
 });

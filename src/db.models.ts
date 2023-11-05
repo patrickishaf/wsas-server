@@ -1,4 +1,4 @@
-import { initUserModel } from './user/user.model';
+import { initUserModel } from './user/models/user.model';
 
 export function initializeDbModels() {
   initUserModel();

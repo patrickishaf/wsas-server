@@ -17,7 +17,7 @@ exposeEnvironmentVariables();
 exposeEnvironmentVariables({ path: `.env.${process.env.NODE_ENV}` });
 
 export const sequelize = new Sequelize(process.env.DB_URL, {
-  logging: (...msg) => console.log(msg),
+  logging: console.log,
 });
 
 async function bootstrap(orm: Sequelize) {
