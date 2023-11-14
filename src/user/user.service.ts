@@ -26,8 +26,20 @@ export class UserService {
         email,
       },
     });
+
     if (matchingUser) console.log(matchingUser.dataValues);
-    return matchingUser.dataValues;
+    return matchingUser ? matchingUser.dataValues : null;
+  }
+
+  async findByUsername(username: string) {
+    const matchingUser = await User.findOne({
+      where: {
+        username,
+      },
+    });
+
+    if (matchingUser) console.log(matchingUser.dataValues);
+    return matchingUser ? matchingUser.dataValues : null;
   }
 
   async deleteUser() {}

@@ -29,6 +29,10 @@ export function initUserModel() {
       country: {
         type: DataTypes.STRING,
       },
+      isVerified: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       sequelize,
