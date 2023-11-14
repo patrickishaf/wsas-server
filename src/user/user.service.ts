@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { UserDto } from './dto/user.dto';
 import { User } from './models/user.model';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UserService {
-  async createNew(user: UserDto) {
+  async createNew(user: CreateUserDto) {
     const { dataValues: newUser } = await User.create({ ...user });
     return newUser.id;
   }
@@ -19,7 +20,15 @@ export class UserService {
     await matchingUser.save();
   }
 
-  async findByEmail() {}
+  async findByEmail(email: string) {
+    const matchingUser = await User.findOne({
+      where: {
+        email,
+      },
+    });
+    if (matchingUser) console.log(matchingUser.dataValues);
+    return matchingUser.dataValues;
+  }
 
   async deleteUser() {}
 

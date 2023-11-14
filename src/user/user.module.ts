@@ -7,5 +7,6 @@ import { UserIdGenerator } from './user-id-gen';
 @Module({
   controllers: [UserController],
   providers: [UserService, UserRepository, UserIdGenerator],
+  exports: [UserService],
 })
 export class UserModule {}

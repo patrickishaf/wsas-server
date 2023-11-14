@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { Sequelize } from 'sequelize';
 import { initializeDbModels } from './db.models';
 import { config as exposeEnvironmentVariables } from 'dotenv';
+import { ValidationPipe } from '@nestjs/common';
 
 /**
  * ---------------THE REASON I'M CALLING exposeEnvironmentVariables() TWICE-------------------
@@ -23,6 +24,7 @@ export const sequelize = new Sequelize(process.env.DB_URL, {
 async function bootstrap(orm: Sequelize) {
   try {
     const app = await NestFactory.create(AppModule);
+    app.useGlobalPipes(new ValidationPipe({ transform: true }));
     await orm.authenticate();
     initializeDbModels();
     await orm.sync({ alter: true });
