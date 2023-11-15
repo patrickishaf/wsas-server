@@ -26,8 +26,6 @@ export class UserService {
         email,
       },
     });
-
-    if (matchingUser) console.log(matchingUser.dataValues);
     return matchingUser ? matchingUser.dataValues : null;
   }
 
@@ -37,8 +35,6 @@ export class UserService {
         username,
       },
     });
-
-    if (matchingUser) console.log(matchingUser.dataValues);
     return matchingUser ? matchingUser.dataValues : null;
   }
 

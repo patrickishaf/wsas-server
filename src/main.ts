@@ -28,7 +28,7 @@ async function bootstrap(orm: Sequelize) {
     await orm.authenticate();
     initializeDbModels();
     await orm.sync({ alter: true });
-    await app.listen(3000);
+    await app.listen(3002);
   } catch (err) {
     console.error('FAILED TO CONNECT TO THE DATABASE:', err);
   }

@@ -27,13 +27,10 @@ export class AuthRepository {
     const existingUserErrorMsg = 'a user already exists with that email';
     const usernameTaken = 'the username has already been taken';
     try {
-      console.log('calling register in auth repository');
       const existingUser = await this.userService.findByEmail(userData.email);
-      console.log({ existingUser });
       if (existingUser) throw new ForbiddenException(existingUserErrorMsg);
 
       const userWithUsername = await this.userService.findByUsername(userData.username);
-      console.log(userWithUsername);
       if (userWithUsername) throw new ForbiddenException(usernameTaken);
 
       const { id, username } = await this.authService.startRegistration(userData);
